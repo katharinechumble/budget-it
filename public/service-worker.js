@@ -44,7 +44,7 @@ self.addEventListener("activate", (evt) => {
 self.addEventListener("fetch", (evt) => {
     if (evt.request.url.includes("/api/") && evt.request.method === "GET") {
         evt.respondWith(
-            caches.deleteopen(DATA_CACHE_NAME)
+            caches.open(DATA_CACHE_NAME)
             .then((cache) => {
                 return fetch(evt.request)
                 .then((response) => {
